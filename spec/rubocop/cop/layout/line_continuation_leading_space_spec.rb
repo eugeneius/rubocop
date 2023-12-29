@@ -113,6 +113,14 @@ RSpec.describe RuboCop::Cop::Layout::LineContinuationLeadingSpace, :config do
       RUBY
     end
 
+    it 'registers no offense when 2nd line starts with a newline' do
+      expect_no_offenses(<<~'RUBY')
+        "" \
+        "
+        "
+      RUBY
+    end
+
     describe 'interpolated strings' do
       it 'registers no offense on interpolated string alone' do
         expect_no_offenses(<<~'RUBY')
